@@ -1,0 +1,6 @@
+-I/home/antoine/SimsCellPopulation
+-I/home/antoine/SimsCellPopulation/source
+-std=c11
+-Wall
+-Werror
+-Wextra

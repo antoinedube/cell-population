@@ -1,3 +1,6 @@
+#ifndef MANAGER_HPP
+#define MANAGER_HPP
+
 class Manager {
  public:
     Manager();
@@ -5,3 +8,4 @@ class Manager {
  private:
 };
 
+#endif

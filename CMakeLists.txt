@@ -12,7 +12,10 @@ file (
     GLOB
     source_files
     source/CellDynamics/*.cpp
+    source/Domains/*.cpp
     source/Manager/*.cpp
+    source/Models/*.cpp
+    source/Random/*.cpp
 )
 
 add_executable (

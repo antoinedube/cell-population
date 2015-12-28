@@ -1,0 +1,4 @@
+#ifndef MERSENNETWISTER_HPP
+#define MERSENNETWISTER_HPP
+
+#endif
