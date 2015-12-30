@@ -9,4 +9,4 @@ class MockManager : public Manager {
     MOCK_METHOD0 ( execute, void() );
 };
 
-#endif // MOCKMANAGER_H
+#endif

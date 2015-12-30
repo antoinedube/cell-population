@@ -2,6 +2,12 @@
 #include <gtest/gtest.h>
 
 #include "test/Manager/TestManager.hpp"
+#include "test/Models/TestCell.hpp"
+#include "test/Models/TestParticle.hpp"
+#include "test/Models/TestSystem.hpp"
+#include "test/Models/TestSystemBuilder.hpp"
+#include "test/Random/TestMersenneTwister.hpp"
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleMock(&argc, argv);

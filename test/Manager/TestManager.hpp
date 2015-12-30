@@ -14,4 +14,4 @@ TEST ( Manager, CanBeCreated ) {
     delete manager;
 }
 
-#endif // TESTMANAGER_H
+#endif

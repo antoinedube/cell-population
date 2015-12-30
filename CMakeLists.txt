@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8)
 
 project (SimulationCellPopulation)
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -g3 -march=native -Wall -Werror -Wextra -pedantic -s")
+set(CMAKE_CXX_FLAGS "-std=c++11 -Ofast -march=native -Wall -Werror -Wextra -pedantic -s")
 
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/source)
@@ -33,7 +33,6 @@ TARGET_LINK_LIBRARIES(
 file (
     GLOB
     test_files
-    test/*.cpp
 )
 
 add_executable (
