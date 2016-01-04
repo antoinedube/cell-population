@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "Domains/Domains.hpp"
 #include "Models/Cell.hpp"
 #include "Models/Parameters.hpp"
 #include "Models/Particle.hpp"
@@ -7,7 +8,8 @@
 #include "Models/SystemBuilder.hpp"
 
 
-SystemBuilder::SystemBuilder(Parameters *parameters) {
+SystemBuilder::SystemBuilder(Parameters *parameters, MersenneTwister *mersenne_twister) {
+    this->mersenne_twister = mersenne_twister;
     this->parameters = parameters;
     this->system = new System();
 }
@@ -23,9 +25,10 @@ SystemBuilder* SystemBuilder::add_cell() {
     Particle *target_particle;
 
     for (int i=0 ; i<10 ; i++) {
-        target_particle = new Particle();
-        target_particle->x = x;
-        target_particle->y = y;
+        target_particle = new Particle(x,y);
+        // Constructor assigns given position to trial x & y.
+        // Check position and accept trial.
+        // In method to accept position: add particle to domains.
 
         target_cell->particles->push_back(target_particle);
         system->particles->push_back(target_particle);
@@ -37,9 +40,7 @@ SystemBuilder* SystemBuilder::add_cell() {
     y++;
 
     for (int i=0 ; i<10 ; i++) {
-        target_particle = new Particle();
-        target_particle->x = x;
-        target_particle->y = y;
+        target_particle = new Particle(x,y);
 
         target_cell->particles->push_back(target_particle);
         system->particles->push_back(target_particle);

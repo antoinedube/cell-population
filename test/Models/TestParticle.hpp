@@ -10,7 +10,7 @@
 
 
 TEST(Particle, CanBeCreated) {
-    Particle *particle = new Particle ();
+    Particle *particle = new Particle(0, 0);
     EXPECT_TRUE(particle != NULL);
     delete particle;
 }
