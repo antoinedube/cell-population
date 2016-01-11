@@ -1,6 +1,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include "test/Domains/TestDomains.hpp"
 #include "test/Manager/TestManager.hpp"
 #include "test/Models/TestCell.hpp"
 #include "test/Models/TestParticle.hpp"

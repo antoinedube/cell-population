@@ -9,6 +9,8 @@ class Particle {
 
     virtual void accept_trial();
 
+    int id;
+
     int x;
     int y;
 
