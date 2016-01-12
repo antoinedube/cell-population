@@ -11,12 +11,16 @@ class Domains {
     virtual ~Domains();
 
     virtual std::vector<Particle *> get_neighboring_particles(Particle *particle);
+
     virtual void add(Particle *particle);
-    virtual void update(Particle *particle);
     virtual void remove(Particle *particle);
 
+    virtual std::vector<Particle *> vector_at(int i);
+    virtual int position_to_domain_index(int x, int y);
+    virtual int total_size();
+
  private:
-    std::vector< std::vector< std::vector<Particle *> > > *domain_matrix;
+    std::vector<Particle *> *domain_matrix;
 };
 
 #endif
