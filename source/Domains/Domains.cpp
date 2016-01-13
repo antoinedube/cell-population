@@ -5,7 +5,7 @@
 #include "Domains/Domains.hpp"
 #include "Models/Particle.hpp"
 
-// Change 100*100 for grid size
+// Change 100*100 for grid size, in Parameters
 
 Domains::Domains() {
     this->domain_matrix = new std::vector<Particle *>[100*100];
@@ -29,7 +29,7 @@ void Domains::add(Particle *particle) {
 }
 
 void Domains::remove(Particle *particle) {
-    // What if particle has changed domain?
+    // Must check with vector of "get_neighboring_particles"
     int index = this->position_to_domain_index(particle->x, particle->y);
     this->domain_matrix[index].erase(std::remove(this->domain_matrix[index].begin(), this->domain_matrix[index].end(), particle), this->domain_matrix[index].end());
 }
@@ -42,6 +42,20 @@ std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
     neighboring_particles.push_back(particle);
 
     return neighboring_particles;
+}
+
+std::vector<int> Domains::indices_of_neighbors(int x, int y) {
+    std::vector<int> neighbors;
+
+    if (x==0) {
+        neighbors.push_back(this->position_to_domain_index(100,y));
+    }
+    else if (y==0) {
+        neighbors.push_back(this->position_to_domain_index(x,100));
+    }
+    // etc..
+
+    return neighbors;
 }
 
 int Domains::total_size() {

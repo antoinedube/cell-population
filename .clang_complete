@@ -1,6 +1,6 @@
 -I/home/antoine/CellPopulation
 -I/home/antoine/CellPopulation/source
--std=c11
+-std=c++11
 -Wall
 -Werror
 -Wextra

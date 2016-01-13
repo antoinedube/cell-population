@@ -17,6 +17,7 @@ class Domains {
 
     virtual std::vector<Particle *> vector_at(int i);
     virtual int position_to_domain_index(int x, int y);
+    virtual std::vector<int> indices_of_neighbors(int i);
     virtual int total_size();
 
  private:
