@@ -42,4 +42,10 @@ TEST(Domains, CanRemoveParticle) {
     delete domains;
 }
 
+TEST(Domains, CanRecoverArrayOfParticles) {
+    Domains *domains = new Domains();
+
+    delete domains;
+}
+
 #endif

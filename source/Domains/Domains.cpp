@@ -44,16 +44,43 @@ std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
     return neighboring_particles;
 }
 
-std::vector<int> Domains::indices_of_neighbors(int x, int y) {
+std::vector<int> Domains::indices_of_neighboring_domains(int x, int y) {
     std::vector<int> neighbors;
 
-    if (x==0) {
-        neighbors.push_back(this->position_to_domain_index(100,y));
+    for (auto nx=x-1 ; nx<=x+1 ; nx++) {
+        for (auto ny=y-1 ; ny<=y+1 ; ny++) {
+            if (nx<0 || ny<0 || nx>99 || ny>99) {
+                std::cout << "Domains::indices_of_neighboring_domains : invalid index" << std::endl;
+            }
+            else if (nx==-1 && ny==-1) {
+                neighbors.push_back(this->position_to_domain_index(99,99));
+            }
+            else if (nx==-1 && ny==100) {
+                neighbors.push_back(this->position_to_domain_index(99,0));
+            }
+            else if (nx==100 && ny==-1) {
+                neighbors.push_back(this->position_to_domain_index(0,99));
+            }
+            else if (nx==100 && ny==100) {
+                neighbors.push_back(this->position_to_domain_index(0,0));
+            }
+            else if (nx==-1) {
+                neighbors.push_back(this->position_to_domain_index(99,y));
+            }
+            else if (nx==100) {
+                neighbors.push_back(this->position_to_domain_index(0,y));
+            }
+            else if (ny==-1) {
+                neighbors.push_back(this->position_to_domain_index(x,99));
+            }
+            else if (ny==100) {
+                neighbors.push_back(this->position_to_domain_index(x,0));
+            }
+            else {
+                neighbors.push_back(this->position_to_domain_index(x,y));
+            }
+        }
     }
-    else if (y==0) {
-        neighbors.push_back(this->position_to_domain_index(x,100));
-    }
-    // etc..
 
     return neighbors;
 }
