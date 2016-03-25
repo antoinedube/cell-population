@@ -29,7 +29,7 @@ void Domains::add(Particle *particle) {
 }
 
 void Domains::remove(Particle *particle) {
-    // Must check with vector of "get_neighboring_particles"
+    // Must find in vectors of "get_neighboring_particles"
     int index = this->position_to_domain_index(particle->x, particle->y);
     this->domain_matrix[index].erase(std::remove(this->domain_matrix[index].begin(), this->domain_matrix[index].end(), particle), this->domain_matrix[index].end());
 }
@@ -37,6 +37,7 @@ void Domains::remove(Particle *particle) {
 std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
     std::cout << "Get neighboring particles" << std::endl;
     // https://stackoverflow.com/questions/18147400/best-way-to-append-vector-to-vector
+    // https://stackoverflow.com/questions/201718/concatenating-two-stdvectors
 
     std::vector<Particle *> neighboring_particles;
     neighboring_particles.push_back(particle);
@@ -65,19 +66,19 @@ std::vector<int> Domains::indices_of_neighboring_domains(int x, int y) {
                 neighbors.push_back(this->position_to_domain_index(0,0));
             }
             else if (nx==-1) {
-                neighbors.push_back(this->position_to_domain_index(99,y));
+                neighbors.push_back(this->position_to_domain_index(99,ny));
             }
             else if (nx==100) {
-                neighbors.push_back(this->position_to_domain_index(0,y));
+                neighbors.push_back(this->position_to_domain_index(0,ny));
             }
             else if (ny==-1) {
-                neighbors.push_back(this->position_to_domain_index(x,99));
+                neighbors.push_back(this->position_to_domain_index(nx,99));
             }
             else if (ny==100) {
-                neighbors.push_back(this->position_to_domain_index(x,0));
+                neighbors.push_back(this->position_to_domain_index(nx,0));
             }
             else {
-                neighbors.push_back(this->position_to_domain_index(x,y));
+                neighbors.push_back(this->position_to_domain_index(nx,ny));
             }
         }
     }
