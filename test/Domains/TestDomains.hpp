@@ -42,13 +42,14 @@ TEST(Domains, CanRemoveParticle) {
     delete domains;
 }
 
-TEST(Domains, CanRecoverArrayOfParticles) {
+TEST(Domains, CanRecoverIndicesOfNeighboringDomains) {
     Domains *domains = new Domains();
-    std::vector<int> neighbors = domains->indices_of_neighboring_domains(4,5);
+    int x = 4;
+    int y = 5;
+    std::vector<int> neighbors = domains->indices_of_neighboring_domains(x,y);
 
-    for (auto value : neighbors) {
-        std::cout << "Indices of neighboring particles: " << value << std::endl;
-    }
+    EXPECT_TRUE(neighbors.at(0) == (x-1)*100+(y-1));
+    EXPECT_TRUE(neighbors.at(4) == x*100+y);
 
     delete domains;
 }
