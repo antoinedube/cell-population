@@ -24,8 +24,8 @@ class Domains {
     std::vector<Particle *> *domain_matrix;
     int cell_size_x;
     int cell_size_y;
-    int system_size_x;
-    int system_size_y;
+    int num_cell_x;
+    int num_cell_y;
 };
 
 #endif

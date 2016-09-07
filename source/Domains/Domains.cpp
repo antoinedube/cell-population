@@ -11,8 +11,8 @@ Domains::Domains() {
   this->domain_matrix = new std::vector<Particle *>[100*100];
   this->cell_size_x = 10;
   this->cell_size_y = 10;
-  this->system_size_x = 100;
-  this->system_size_y = 100;
+  this->num_cell_x = 100;
+  this->num_cell_y = 100;
 }
 
 Domains::~Domains() {
