@@ -2,7 +2,7 @@
 #define DOMAINS_HPP
 
 #include <vector>
-#include <Models/Particle.hpp>
+#include "Models/Particle.hpp"
 
 
 class Domains {

@@ -1,0 +1,7 @@
+{
+  "execPath": "/usr/bin/g++",
+  "gccDefaultCppFlags": "-nostartfiles -fsyntax-only -std=c++11 -Ofast -march=native -Wall -Werror -Wextra -pedantic -s",
+  "gccErrorLimit": 15,
+  "gccIncludePaths": "., ./source",
+  "gccSuppressWarnings": true
+}

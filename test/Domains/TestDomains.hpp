@@ -54,4 +54,12 @@ TEST(Domains, CanRecoverIndicesOfNeighboringDomains) {
     delete domains;
 }
 
+TEST(Domains, CanReturnParticlesInNeighboringDomains) {
+  Domains *domains = new Domains();
+
+  EXPECT_TRUE(1==0);
+
+  delete domains;
+}
+
 #endif
