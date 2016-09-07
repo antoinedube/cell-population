@@ -9,6 +9,10 @@
 
 Domains::Domains() {
   this->domain_matrix = new std::vector<Particle *>[100*100];
+  this->cell_size_x = 10;
+  this->cell_size_y = 10;
+  this->system_size_x = 100;
+  this->system_size_y = 100;
 }
 
 Domains::~Domains() {
@@ -25,6 +29,7 @@ int Domains::position_to_domain_index(int x, int y) {
 
 void Domains::add(Particle *particle) {
   int index = this->position_to_domain_index(particle->x, particle->y);
+  std::cout << "Index when adding: " << index << std::endl;
   this->domain_matrix[index].push_back(particle);
 }
 
@@ -35,13 +40,16 @@ void Domains::remove(Particle *particle) {
 }
 
 std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
-  std::cout << "Get neighboring particles" << std::endl;
   std::vector<Particle *> neighboring_particles;
-  neighboring_particles.push_back(particle);
   // Add particles of neighboring domains
 
-  for (auto index : this->indices_of_neighboring_domains(particle->x, particle->y)) {
-    std::cout << "Neighboring particles: " << index << std::endl;
+  std::vector<int> index_neighbors = this->indices_of_neighboring_domains(particle->x, particle->y);
+  for (auto index : index_neighbors) {
+    std::cout << "Neighboring indices: " << index << std::endl;
+    std::vector<Particle *> current = this->vector_at(index);
+    for (auto item : current) {
+      neighboring_particles.push_back(item);
+    }
   }
 
   return neighboring_particles;
@@ -50,10 +58,12 @@ std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
 std::vector<int> Domains::indices_of_neighboring_domains(int x, int y) {
   std::vector<int> neighbors;
 
+  // x and y are positions, not indices
+  // Should be +/- gridcell size
   for (auto nx=x-1 ; nx<=x+1 ; nx++) {
     for (auto ny=y-1 ; ny<=y+1 ; ny++) {
       if (nx<0 || ny<0 || nx>99 || ny>99) {
-        std::cout << "Domains::indices_of_neighboring_domains : invalid index" << std::endl;
+        std::cout << "Domains::indices_of_neighboring_domains : invalid index\t" << nx << ", " << ny << std::endl;
       }
       else if (nx==-1 && ny==-1) {
         neighbors.push_back(this->position_to_domain_index(99,99));
