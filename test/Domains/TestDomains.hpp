@@ -17,19 +17,19 @@ TEST(Domains, CanBeCreated) {
 }
 
 TEST(Domains, CanAddParticle) {
-  Domains *domains = new Domains();
   Particle *particle = new Particle(15,15);
+  Domains *domains = new Domains();
   domains->add(particle);
 
   EXPECT_TRUE(domains->total_size() == 1);
 
-  delete particle;
   delete domains;
+  delete particle;
 }
 
 TEST(Domains, CanRemoveParticle) {
-  Domains *domains = new Domains();
   Particle *particle = new Particle(15,15);
+  Domains *domains = new Domains();
   domains->add(particle);
 
   EXPECT_TRUE(domains->total_size() == 1);
@@ -38,8 +38,8 @@ TEST(Domains, CanRemoveParticle) {
 
   EXPECT_TRUE(domains->total_size() == 0);
 
-  delete particle;
   delete domains;
+  delete particle;
 }
 
 TEST(Domains, CanRecoverIndicesOfNeighboringDomains) {
@@ -48,8 +48,7 @@ TEST(Domains, CanRecoverIndicesOfNeighboringDomains) {
   int y = 5;
   std::vector<int> neighbors = domains->indices_of_neighboring_domains(x,y);
 
-  EXPECT_TRUE(neighbors.at(0) == (x-1)*100+(y-1));
-  EXPECT_TRUE(neighbors.at(4) == x*100+y);
+  EXPECT_EQ(9, neighbors.size());
 
   delete domains;
 }
@@ -66,12 +65,10 @@ TEST(Domains, CanReturnParticlesInNeighboringDomains) {
   domains->add(compared_particle);
 
   std::vector<Particle *> particlesInNeighborhood = domains->get_neighboring_particles(reference_particle);
-  std::cout << "Size: " << particlesInNeighborhood.size() << std::endl;
   for (auto item : particlesInNeighborhood) {
-    std::cout << "item: " << item << std::endl;
+    EXPECT_EQ(compared_particle->x, item->x);
+    EXPECT_EQ(compared_particle->y, item->y);
   }
-
-  EXPECT_TRUE(1==0);
 
   delete reference_particle;
   delete compared_particle;

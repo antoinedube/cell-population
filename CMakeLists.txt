@@ -50,4 +50,3 @@ TARGET_LINK_LIBRARIES(
     pthread
     gmock
 )
-

@@ -26,6 +26,8 @@ class Domains {
     int cell_size_y;
     int num_cell_x;
     int num_cell_y;
+    int system_size_x;
+    int system_size_y;
 };
 
 #endif

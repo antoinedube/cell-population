@@ -1,18 +1,20 @@
 #include <algorithm>
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 
 #include "Domains/Domains.hpp"
 #include "Models/Particle.hpp"
 
-// Change 100*100 for grid size, in Parameters
-
 Domains::Domains() {
-  this->domain_matrix = new std::vector<Particle *>[100*100];
   this->cell_size_x = 10;
   this->cell_size_y = 10;
   this->num_cell_x = 100;
   this->num_cell_y = 100;
+  this->system_size_x = this->cell_size_x * this->num_cell_x;
+  this->system_size_y = this->cell_size_y * this->num_cell_y;
+
+  this->domain_matrix = new std::vector<Particle *>[this->num_cell_x * this->num_cell_y];
 }
 
 Domains::~Domains() {
@@ -24,12 +26,14 @@ std::vector<Particle *> Domains::vector_at(int i) {
 }
 
 int Domains::position_to_domain_index(int x, int y) {
-  return x*100+y;
+  int index_x = int(x/this->cell_size_x);
+  int index_y = int(y/this->cell_size_y);
+
+  return index_x*(this->num_cell_y-1)+index_y;
 }
 
 void Domains::add(Particle *particle) {
   int index = this->position_to_domain_index(particle->x, particle->y);
-  std::cout << "Index when adding: " << index << std::endl;
   this->domain_matrix[index].push_back(particle);
 }
 
@@ -41,11 +45,8 @@ void Domains::remove(Particle *particle) {
 
 std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
   std::vector<Particle *> neighboring_particles;
-  // Add particles of neighboring domains
-
-  std::vector<int> index_neighbors = this->indices_of_neighboring_domains(particle->x, particle->y);
+  std::vector<int> index_neighbors = this->indices_of_neighboring_domains(particle->x, particle->y); // Trial position or not?
   for (auto index : index_neighbors) {
-    std::cout << "Neighboring indices: " << index << std::endl;
     std::vector<Particle *> current = this->vector_at(index);
     for (auto item : current) {
       neighboring_particles.push_back(item);
@@ -58,40 +59,20 @@ std::vector<Particle *> Domains::get_neighboring_particles(Particle *particle) {
 std::vector<int> Domains::indices_of_neighboring_domains(int x, int y) {
   std::vector<int> neighbors;
 
-  // x and y are positions, not indices
-  // Should be +/- gridcell size
-  for (auto nx=x-1 ; nx<=x+1 ; nx++) {
-    for (auto ny=y-1 ; ny<=y+1 ; ny++) {
-      if (nx<0 || ny<0 || nx>99 || ny>99) {
-        std::cout << "Domains::indices_of_neighboring_domains : invalid index\t" << nx << ", " << ny << std::endl;
+  for (int i=-1; i<2; i++) {
+    for (int j=-1; j<2; j++) {
+      int nx = x + i*this->cell_size_x;
+      int ny = y + j*this->cell_size_y;
+
+      while (nx<0) nx += this->system_size_x;
+      while (ny<0) ny += this->system_size_y;
+      while (nx>=this->system_size_x) nx -= this->system_size_x;
+      while (ny>=this->system_size_y) ny -= this->system_size_y;
+
+      if (nx<0 || ny<0 || nx>this->system_size_x || ny>this->system_size_y) {
+        throw std::invalid_argument("Received invalid positions");
       }
-      else if (nx==-1 && ny==-1) {
-        neighbors.push_back(this->position_to_domain_index(99,99));
-      }
-      else if (nx==-1 && ny==100) {
-        neighbors.push_back(this->position_to_domain_index(99,0));
-      }
-      else if (nx==100 && ny==-1) {
-        neighbors.push_back(this->position_to_domain_index(0,99));
-      }
-      else if (nx==100 && ny==100) {
-        neighbors.push_back(this->position_to_domain_index(0,0));
-      }
-      else if (nx==-1) {
-        neighbors.push_back(this->position_to_domain_index(99,ny));
-      }
-      else if (nx==100) {
-        neighbors.push_back(this->position_to_domain_index(0,ny));
-      }
-      else if (ny==-1) {
-        neighbors.push_back(this->position_to_domain_index(nx,99));
-      }
-      else if (ny==100) {
-        neighbors.push_back(this->position_to_domain_index(nx,0));
-      }
-      else {
-        neighbors.push_back(this->position_to_domain_index(nx,ny));
-      }
+      neighbors.push_back(this->position_to_domain_index(nx, ny));
     }
   }
 
@@ -101,7 +82,7 @@ std::vector<int> Domains::indices_of_neighboring_domains(int x, int y) {
 int Domains::total_size() {
   int size = 0;
 
-  for (auto i=0 ; i<100*100 ; i++) {
+  for (int i=0; i<int(100*100); i++) {
     size += this->domain_matrix[i].size();
   }
 
