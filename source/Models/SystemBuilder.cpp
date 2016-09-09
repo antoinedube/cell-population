@@ -8,7 +8,8 @@
 #include "Models/SystemBuilder.hpp"
 
 
-SystemBuilder::SystemBuilder(Parameters *parameters, MersenneTwister *mersenne_twister) {
+SystemBuilder::SystemBuilder(Domains *domains, MersenneTwister *mersenne_twister, Parameters *parameters) {
+  this->domains = domains;
   this->mersenne_twister = mersenne_twister;
   this->parameters = parameters;
   this->system = new System();

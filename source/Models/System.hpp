@@ -8,12 +8,12 @@
 
 
 class System {
- public:
-    System();
-    virtual ~System();
+public:
+  System();
+  virtual ~System();
 
-    std::vector<Particle *> *particles;
-    std::vector<Cell *> *cells;
+  std::vector<Particle *> *particles;
+  std::vector<Cell *> *cells;
 };
 
 #endif

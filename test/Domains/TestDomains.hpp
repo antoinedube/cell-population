@@ -9,7 +9,6 @@
 #include "Domains/Domains.hpp"
 #include "Models/Particle.hpp"
 
-
 TEST(Domains, CanBeCreated) {
   Domains *domains = new Domains();
   EXPECT_TRUE(domains != NULL);
@@ -17,14 +16,14 @@ TEST(Domains, CanBeCreated) {
 }
 
 TEST(Domains, CanAddParticle) {
-  Particle *particle = new Particle(15,15);
   Domains *domains = new Domains();
+  Particle *particle = new Particle(15,15);
   domains->add(particle);
 
   EXPECT_TRUE(domains->total_size() == 1);
 
-  delete domains;
   delete particle;
+  delete domains;
 }
 
 TEST(Domains, CanRemoveParticle) {
