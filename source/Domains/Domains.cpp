@@ -14,7 +14,8 @@ Domains::Domains() {
   this->system_size_x = this->cell_size_x * this->num_cell_x;
   this->system_size_y = this->cell_size_y * this->num_cell_y;
 
-  this->domain_matrix = new std::vector<Particle *>[this->num_cell_x * this->num_cell_y];
+  // vector of vector should be better
+  this->domain_matrix = new std::vector<Particle *>[this->num_cell_x * this->num_cell_y]();
 }
 
 Domains::~Domains() {
