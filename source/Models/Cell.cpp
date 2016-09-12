@@ -5,7 +5,6 @@
 #include "Models/Cell.hpp"
 #include "Models/Particle.hpp"
 
-
 Cell::Cell() {
     this->particles = new std::vector<Particle *>();
 }
@@ -23,6 +22,5 @@ std::string Cell::print() {
     for (auto particle : *this->particles) {
         output << particle->x << ", " << particle->y << std::endl;
     }
-
     return output.str();
 }
