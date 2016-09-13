@@ -1,6 +1,5 @@
 #include "Models/Particle.hpp"
 
-
 Particle::Particle(int x, int y) {
     this->id = 0;
     this->trial_x = x;

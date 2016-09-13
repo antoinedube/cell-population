@@ -1,9 +1,7 @@
 #include <vector>
-
 #include "Models/Cell.hpp"
 #include "Models/Particle.hpp"
 #include "Models/System.hpp"
-
 
 System::System() {
   this->particles = new std::vector<Particle *>();
