@@ -12,6 +12,8 @@
 #include "test/Models/MockParameters.hpp"
 #include "test/Random/MockMersenneTwister.hpp"
 
+using ::testing::_;
+
 TEST(SystemBuilder, CanBeCreated) {
   MockDomains *mock_domains = new MockDomains();
   MockParameters *mock_parameters = new MockParameters();
@@ -33,10 +35,9 @@ TEST(SystemBuilder, CanAddCellToSystem) {
   MockParameters *mock_parameters = new MockParameters();
   MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
   SystemBuilder *system_builder = new SystemBuilder(mock_domains, mock_mersenne_twister, mock_parameters);
-  System *system;
 
-  system = system_builder->add_cell()->build();
-
+  EXPECT_CALL(*mock_domains, add(_)).Times(20);
+  System *system = system_builder->add_cell()->build();
   EXPECT_TRUE(system->cells->size() > 0);
 
   delete system_builder;

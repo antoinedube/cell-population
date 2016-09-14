@@ -6,7 +6,7 @@
 
 
 class MockParameters : public Parameters {
-    public:
+  public:
 };
 
 #endif

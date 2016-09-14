@@ -6,7 +6,6 @@
 #include "Models/System.hpp"
 #include "Random/MersenneTwister.hpp"
 
-
 class SystemBuilder {
 public:
   SystemBuilder(Domains *domains, MersenneTwister *mersenne_twister, Parameters *parameters);

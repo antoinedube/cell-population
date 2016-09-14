@@ -3,12 +3,14 @@
 
 
 class Parameters {
- public:
-    Parameters();
-    virtual ~Parameters();
+public:
+  Parameters();
+  virtual ~Parameters();
 
-    int system_size_x;
-    int system_size_y;
+  int n_cycles;
+  int n_steps;
+  int system_size_x;
+  int system_size_y;
 };
 
 #endif
