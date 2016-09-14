@@ -2,12 +2,11 @@
 #define TESTDOMAINS_H
 
 #include <iostream>
-
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-
 #include "Domains/Domains.hpp"
 #include "Models/Particle.hpp"
+#include "test/Random/MockMersenneTwister.hpp"
 
 TEST(Domains, CanBeCreated) {
   Domains *domains = new Domains();
@@ -17,17 +16,20 @@ TEST(Domains, CanBeCreated) {
 
 TEST(Domains, CanAddParticle) {
   Domains *domains = new Domains();
-  Particle *particle = new Particle(15,15);
+  MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
+  Particle *particle = new Particle(15, 15, mock_mersenne_twister);
   domains->add(particle);
 
   EXPECT_TRUE(domains->total_size() == 1);
 
   delete particle;
+  delete mock_mersenne_twister;
   delete domains;
 }
 
 TEST(Domains, CanRemoveParticle) {
-  Particle *particle = new Particle(15,15);
+  MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
+  Particle *particle = new Particle(15, 15, mock_mersenne_twister);
   Domains *domains = new Domains();
   domains->add(particle);
 
@@ -39,6 +41,7 @@ TEST(Domains, CanRemoveParticle) {
 
   delete domains;
   delete particle;
+  delete mock_mersenne_twister;
 }
 
 TEST(Domains, CanRecoverIndicesOfNeighboringDomains) {
@@ -55,10 +58,11 @@ TEST(Domains, CanRecoverIndicesOfNeighboringDomains) {
 TEST(Domains, CanReturnParticlesInNeighboringDomains) {
   Domains *domains = new Domains();
 
-  Particle *reference_particle = new Particle(15, 15);
+  MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
+  Particle *reference_particle = new Particle(15, 15, mock_mersenne_twister);
   reference_particle->accept_trial();
 
-  Particle *compared_particle = new Particle(22, 15);
+  Particle *compared_particle = new Particle(22, 15, mock_mersenne_twister);
   compared_particle->accept_trial();
 
   domains->add(compared_particle);
@@ -71,6 +75,7 @@ TEST(Domains, CanReturnParticlesInNeighboringDomains) {
 
   delete reference_particle;
   delete compared_particle;
+  delete mock_mersenne_twister;
   delete domains;
 }
 

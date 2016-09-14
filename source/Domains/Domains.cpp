@@ -89,3 +89,7 @@ int Domains::total_size() {
 
   return size;
 }
+
+bool Domains::is_trial_site_available(Particle * /*particle*/) {
+  return false;
+}
