@@ -2,7 +2,6 @@
 #define SYSTEM_HPP
 
 #include <vector>
-
 #include "Models/Cell.hpp"
 #include "Models/Particle.hpp"
 #include "Random/MersenneTwister.hpp"

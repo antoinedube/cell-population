@@ -4,7 +4,6 @@
 #include "gmock/gmock.h"
 #include "Models/Parameters.hpp"
 
-
 class MockParameters : public Parameters {
   public:
 };
