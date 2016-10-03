@@ -11,6 +11,7 @@ public:
   virtual ~Particle();
 
   virtual void accept_trial();
+  virtual void reject_trial();
   virtual void take_random_step();
 
   int id;

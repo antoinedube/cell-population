@@ -17,6 +17,11 @@ void Particle::accept_trial() {
   this->y = this->trial_y;
 }
 
+void Particle::reject_trial() {
+  this->trial_x = this->x;
+  this->trial_y = this->y;
+}
+
 void Particle::take_random_step() {
   double r = mersenne_twister->unit();
   if (r<0.25) {

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Domains/Domains.hpp"
+#include "Integration/Integration.hpp"
 #include "Models/Parameters.hpp"
 #include "Models/SystemBuilder.hpp"
 #include "Random/MersenneTwister.hpp"
@@ -12,6 +13,10 @@ int main() {
   System *system = system_builder->add_cell()->build();
   delete system_builder;
 
+  Integration *integration = new Integration(parameters, system);
+  integration->run();
+
+  delete integration;
   delete domains;
   delete mersenne_twister;
   delete parameters;

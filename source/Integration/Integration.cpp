@@ -1,9 +1,12 @@
+#include <iostream>
+#include "Domains/Domains.hpp"
 #include "Integration/Integration.hpp"
 #include "Models/Parameters.hpp"
 #include "Models/System.hpp"
 #include "Random/MersenneTwister.hpp"
 
-Integration::Integration(Parameters *parameters, System *system) {
+Integration::Integration(Domains *domains, Parameters *parameters, System *system) {
+  this->domains = domains;
   this->parameters = parameters;
   this->system = system;
 }
@@ -25,6 +28,8 @@ void Integration::run() {
       // If the particle is in a cell, check neighbors in chain
 
       // Metropolis-Hastings check using cell dynamics
+
     }
+    std::cout << "Cycle " << cycle <<  " of " << this->parameters->n_cycles << std::endl;
   }
 }

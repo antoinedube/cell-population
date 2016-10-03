@@ -90,6 +90,8 @@ int Domains::total_size() {
   return size;
 }
 
-bool Domains::is_trial_site_available(Particle * /*particle*/) {
+bool Domains::is_trial_site_available(Particle *particle) {
+  std::vector<Particle *> neighboring_particles = this->get_neighboring_particles(particle);
+  
   return false;
 }
