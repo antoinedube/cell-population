@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Models/Particle.hpp"
 #include "Random/MersenneTwister.hpp"
 
@@ -36,4 +37,12 @@ void Particle::take_random_step() {
   else {
     this->trial_y = this->y + 1;
   }
+}
+
+double Particle::distance_to(Particle *particle) {
+  double distance = 0.0;
+  double delta_x = particle->x - this->x;
+  double delta_y = particle->y - this->y;
+  distance = delta_x*delta_x + delta_y*delta_y;
+  return sqrt(distance);
 }

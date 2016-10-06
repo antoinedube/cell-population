@@ -13,6 +13,7 @@ public:
   virtual void accept_trial();
   virtual void reject_trial();
   virtual void take_random_step();
+  virtual double distance_to(Particle *particle);
 
   int id;
   int x;
