@@ -24,6 +24,7 @@ void Integration::run() {
       current_particle->take_random_step();
 
       // Check if site is available
+      this->domains->is_trial_site_available(current_particle);
 
       // If the particle is in a cell, check neighbors in chain
 

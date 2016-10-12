@@ -25,4 +25,4 @@ public:
   MersenneTwister *mersenne_twister;
 };
 
-#endif
+#endif // PARTICLE_HPP

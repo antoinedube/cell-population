@@ -92,6 +92,11 @@ int Domains::total_size() {
 
 bool Domains::is_trial_site_available(Particle *particle) {
   std::vector<Particle *> neighboring_particles = this->get_neighboring_particles(particle);
-  
+
+  std::cout << particle->x << ", " << particle->y << std::endl;
+  for (auto part : neighboring_particles) {
+    std::cout << "\t" << part->x << ", " << part->y << std::endl;
+  }
+
   return false;
 }
