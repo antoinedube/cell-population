@@ -1,9 +1,10 @@
 #include <iostream>
-#include "Domains/Domains.hpp"
-#include "Integration/Integration.hpp"
-#include "Models/Parameters.hpp"
-#include "Models/SystemBuilder.hpp"
-#include "Random/MersenneTwister.hpp"
+
+#include "domains/domains.hpp"
+#include "integration/integration.hpp"
+#include "models/parameters.hpp"
+#include "models/system-builder.hpp"
+#include "random/mersenne-twister.hpp"
 
 int main() {
   Domains *domains = new Domains();
@@ -13,7 +14,7 @@ int main() {
   System *system = system_builder->add_cell()->build();
   delete system_builder;
 
-  Integration *integration = new Integration(parameters, system);
+  Integration *integration = new Integration(domains, parameters, system);
   integration->run();
 
   delete integration;
@@ -21,5 +22,6 @@ int main() {
   delete mersenne_twister;
   delete parameters;
   delete system;
+
   return 0;
 }

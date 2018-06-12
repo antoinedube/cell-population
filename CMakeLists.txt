@@ -11,11 +11,7 @@ include_directories(${CMAKE_SOURCE_DIR}/source)
 file (
   GLOB
   source_files
-  source/CellDynamics/*.cpp
-  source/Domains/*.cpp
-  source/Integration/*.cpp
-  source/Models/*.cpp
-  source/Random/*.cpp
+  source/**/*.cpp
 )
 
 add_executable (
