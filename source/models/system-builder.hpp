@@ -8,16 +8,16 @@
 
 class SystemBuilder {
 public:
-  SystemBuilder(Domains *domains, MersenneTwister *mersenne_twister, Parameters *parameters);
-  virtual ~SystemBuilder();
-  virtual SystemBuilder* add_cell();
-  virtual System* build();
+    SystemBuilder(Domains *domains, MersenneTwister *mersenne_twister, Parameters *parameters);
+    virtual ~SystemBuilder();
+    virtual SystemBuilder* add_cell();
+    virtual System* build();
 
 private:
-  Domains *domains;
-  MersenneTwister *mersenne_twister;
-  Parameters *parameters;
-  System *system;
+    Domains *domains;
+    MersenneTwister *mersenne_twister;
+    Parameters *parameters;
+    System *system;
 };
 
 #endif

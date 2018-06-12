@@ -13,36 +13,36 @@
 using ::testing::_;
 
 TEST(SystemBuilder, CanBeCreated) {
-  MockDomains *mock_domains = new MockDomains();
-  MockParameters *mock_parameters = new MockParameters();
-  MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
-  SystemBuilder *system_builder = new SystemBuilder(mock_domains, mock_mersenne_twister, mock_parameters);
-  System *system = system_builder->build();
+    MockDomains *mock_domains = new MockDomains();
+    MockParameters *mock_parameters = new MockParameters();
+    MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
+    SystemBuilder *system_builder = new SystemBuilder(mock_domains, mock_mersenne_twister, mock_parameters);
+    System *system = system_builder->build();
 
-  EXPECT_TRUE(system_builder != NULL);
+    EXPECT_TRUE(system_builder != NULL);
 
-  delete system_builder;
-  delete system;
-  delete mock_domains;
-  delete mock_mersenne_twister;
-  delete mock_parameters;
+    delete system_builder;
+    delete system;
+    delete mock_domains;
+    delete mock_mersenne_twister;
+    delete mock_parameters;
 }
 
 TEST(SystemBuilder, CanAddCellToSystem) {
-  MockDomains *mock_domains = new MockDomains();
-  MockParameters *mock_parameters = new MockParameters();
-  MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
-  SystemBuilder *system_builder = new SystemBuilder(mock_domains, mock_mersenne_twister, mock_parameters);
+    MockDomains *mock_domains = new MockDomains();
+    MockParameters *mock_parameters = new MockParameters();
+    MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
+    SystemBuilder *system_builder = new SystemBuilder(mock_domains, mock_mersenne_twister, mock_parameters);
 
-  EXPECT_CALL(*mock_domains, add(_)).Times(20);
-  System *system = system_builder->add_cell()->build();
-  EXPECT_TRUE(system->cells->size() > 0);
+    EXPECT_CALL(*mock_domains, add(_)).Times(20);
+    System *system = system_builder->add_cell()->build();
+    EXPECT_TRUE(system->cells->size() > 0);
 
-  delete system_builder;
-  delete system;
-  delete mock_domains;
-  delete mock_mersenne_twister;
-  delete mock_parameters;
+    delete system_builder;
+    delete system;
+    delete mock_domains;
+    delete mock_mersenne_twister;
+    delete mock_parameters;
 }
 
 #endif

@@ -9,12 +9,12 @@
 
 class Cell {
 public:
-  Cell();
-  virtual ~Cell();
-  virtual int size();
-  virtual std::string print();
+    Cell();
+    virtual ~Cell();
+    virtual int size();
+    virtual std::string print();
 
-  std::vector<Particle *> *particles;
+    std::vector<Particle *> *particles;
 };
 
 #endif

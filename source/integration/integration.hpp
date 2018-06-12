@@ -7,14 +7,14 @@
 
 class Integration {
 public:
-  Integration(Domains *domains, Parameters *parameters, System *system);
-  virtual ~Integration();
+    Integration(Domains *domains, Parameters *parameters, System *system);
+    virtual ~Integration();
 
-  virtual void run();
+    virtual void run();
 private:
-  Domains *domains;
-  Parameters *parameters;
-  System *system;
+    Domains *domains;
+    Parameters *parameters;
+    System *system;
 };
 
 #endif

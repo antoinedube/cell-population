@@ -7,21 +7,21 @@
 #include "random/mersenne-twister.hpp"
 
 int main() {
-  Domains *domains = new Domains();
-  Parameters *parameters = new Parameters();
-  MersenneTwister *mersenne_twister = new MersenneTwister();
-  SystemBuilder *system_builder = new SystemBuilder(domains, mersenne_twister, parameters);
-  System *system = system_builder->add_cell()->build();
-  delete system_builder;
+    Domains *domains = new Domains();
+    Parameters *parameters = new Parameters();
+    MersenneTwister *mersenne_twister = new MersenneTwister();
+    SystemBuilder *system_builder = new SystemBuilder(domains, mersenne_twister, parameters);
+    System *system = system_builder->add_cell()->build();
+    delete system_builder;
 
-  Integration *integration = new Integration(domains, parameters, system);
-  integration->run();
+    Integration *integration = new Integration(domains, parameters, system);
+    integration->run();
 
-  delete integration;
-  delete domains;
-  delete mersenne_twister;
-  delete parameters;
-  delete system;
+    delete integration;
+    delete domains;
+    delete mersenne_twister;
+    delete parameters;
+    delete system;
 
-  return 0;
+    return 0;
 }

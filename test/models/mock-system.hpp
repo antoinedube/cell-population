@@ -8,7 +8,7 @@
 
 class MockSystem : public System {
 public:
-  MockSystem(MockMersenneTwister *mock_mersenne_twister);
+    MockSystem(MockMersenneTwister *mock_mersenne_twister);
 };
 
 MockSystem::MockSystem(MockMersenneTwister * mock_mersenne_twister) : System(mock_mersenne_twister) {}

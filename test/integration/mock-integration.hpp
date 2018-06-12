@@ -7,8 +7,8 @@
 
 
 class MockIntegration : public Integration {
-  public:
-  MOCK_METHOD0 ( run, void() );
+public:
+    MOCK_METHOD0 ( run, void() );
 };
 
 #endif

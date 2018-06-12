@@ -9,14 +9,14 @@
 
 class System {
 public:
-  System(MersenneTwister *mersenne_twister);
-  virtual ~System();
+    System(MersenneTwister *mersenne_twister);
+    virtual ~System();
 
-  virtual Particle * pick_particle();
+    virtual Particle * pick_particle();
 
-  std::vector<Particle *> *particles;
-  std::vector<Cell *> *cells;
-  MersenneTwister *mersenne_twister;
+    std::vector<Particle *> *particles;
+    std::vector<Cell *> *cells;
+    MersenneTwister *mersenne_twister;
 };
 
 #endif

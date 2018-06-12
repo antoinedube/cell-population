@@ -7,7 +7,7 @@
 
 
 class MockSystemBuilder : public SystemBuilder {
-    public:
+public:
     MOCK_METHOD0 ( execute, void() );
 };
 

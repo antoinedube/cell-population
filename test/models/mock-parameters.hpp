@@ -6,7 +6,7 @@
 #include "models/parameters.hpp"
 
 class MockParameters : public Parameters {
-  public:
+    public:
 };
 
 #endif

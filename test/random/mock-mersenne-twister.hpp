@@ -7,7 +7,7 @@
 
 
 class MockMersenneTwister : public MersenneTwister {
-    public:
+public:
     MOCK_METHOD0 ( execute, void() );
 };
 

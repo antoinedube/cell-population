@@ -7,7 +7,7 @@
 
 
 class MockCell : public Cell {
-    public:
+public:
     MOCK_METHOD0 ( execute, void() );
 };
 

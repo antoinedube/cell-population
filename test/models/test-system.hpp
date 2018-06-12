@@ -9,13 +9,13 @@
 #include "test/random/mock-mersenne-twister.hpp"
 
 TEST(System, CanBeCreated) {
-  MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
-  System *system = new System (mock_mersenne_twister);
+    MockMersenneTwister *mock_mersenne_twister = new MockMersenneTwister();
+    System *system = new System (mock_mersenne_twister);
 
-  EXPECT_TRUE(system != NULL);
+    EXPECT_TRUE(system != NULL);
 
-  delete system;
-  delete mock_mersenne_twister;
+    delete system;
+    delete mock_mersenne_twister;
 }
 
 #endif
