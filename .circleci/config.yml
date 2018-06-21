@@ -5,7 +5,7 @@ jobs:
       - image: debian:stretch
     steps:
       - run: apt-get update
-      - run: apt-get -y install cmake make gcc
+      - run: apt-get -y install cmake make g++
       - checkout
       - run: mkdir build
       - run: cd build && cmake ..
