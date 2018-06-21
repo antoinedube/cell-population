@@ -14,8 +14,7 @@ SystemBuilder::SystemBuilder(Domains *domains, MersenneTwister *mersenne_twister
     this->system = new System(mersenne_twister);
 }
 
-SystemBuilder::~SystemBuilder() {
-}
+SystemBuilder::~SystemBuilder() {}
 
 SystemBuilder* SystemBuilder::add_cell() {
     int x = int(0.5*this->parameters->system_size_x);
@@ -25,7 +24,7 @@ SystemBuilder* SystemBuilder::add_cell() {
     Particle *target_particle;
 
     for (int i=0 ; i<10 ; i++) {
-        target_particle = new Particle(x, y, mersenne_twister);
+        target_particle = new Particle(x, y, this->mersenne_twister);
         target_particle->accept_trial();
         domains->add(target_particle);
 
@@ -41,7 +40,7 @@ SystemBuilder* SystemBuilder::add_cell() {
     y++;
 
     for (int i=0 ; i<10 ; i++) {
-        target_particle = new Particle(x, y, mersenne_twister);
+        target_particle = new Particle(x, y, this->mersenne_twister);
         target_particle->accept_trial();
         domains->add(target_particle);
 

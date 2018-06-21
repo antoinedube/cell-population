@@ -11,6 +11,8 @@ Particle::Particle(int x, int y, MersenneTwister *mersenne_twister) {
     this->trial_x = x;
     this->trial_y = y;
     this->parent_cell = NULL;
+    this->left_neighbor = NULL;
+    this->right_neighbor = NULL;
     this->mersenne_twister = mersenne_twister;
 }
 

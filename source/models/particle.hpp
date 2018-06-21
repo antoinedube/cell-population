@@ -23,6 +23,8 @@ public:
     int trial_y;
 
     Cell *parent_cell;
+    Particle *left_neighbor;
+    Particle *right_neighbor;
     MersenneTwister *mersenne_twister;
 };
 
