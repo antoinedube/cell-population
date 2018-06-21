@@ -1,16 +1,27 @@
 version: 2
 jobs:
+  configure:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run: ls -lah
   build:
     docker:
       - image: debian:stretch
-      steps:
-        - checkout
-        - run:
-            name: configure
-            command: pwd
-        - run:
-            name: build
-            command: ls -lah
-        - run:
-            name: test
-            command: date
+    steps:
+      - checkout
+      - run: ls -lah
+  test:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run: date
+workflows:
+    version: 2
+    build_and_test:
+      jobs:
+        - configure
+        - build
+        - test
