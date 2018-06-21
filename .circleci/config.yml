@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: debian:stretch
     steps:
-      - run: sudo apt-get update
-      - run: sudo apt-get -y install cmake make gcc
+      - run: apt-get update
+      - run: apt-get -y install cmake make gcc
       - checkout
       - run: cmake --version
       - run: make --version
