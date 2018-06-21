@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: debian:stretch
     steps:
@@ -13,4 +13,4 @@ workflows:
     version: 2
     build_and_test:
       jobs:
-        - test
+        - build
