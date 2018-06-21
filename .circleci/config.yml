@@ -7,8 +7,10 @@ jobs:
       - run: apt-get update
       - run: apt-get -y install cmake make gcc
       - checkout
-      - run: cmake --version
-      - run: make --version
+      - run: mkdir build && cd build
+      - run: cmake ..
+      - run: make
+      - run: ./tests
 workflows:
     version: 2
     build_and_test:
