@@ -30,3 +30,6 @@
 build/
 
 *.plist
+
+# Editor config
+*.kdev4
