@@ -5,12 +5,7 @@ jobs:
       - image: debian:stretch
     steps:
       - run: apt-get update
-      - run: apt-get -y install cmake make g++ googletest google-mock
-      - run: cd /usr/src/googletest/ && mkdir build
-      - run: cd /usr/src/googletest/build && cmake ..
-      - run: cd /usr/src/googletest/build && make
-      - run: cp /usr/src/googletest/build/googlemock/gtest/libgtest* /usr/lib/
-      - run: cp /usr/src/googletest/build/googlemock/libgmock* /usr/lib/
+      - run: apt-get -y install cmake make g++
       - checkout
       - run: mkdir build
       - run: cd build && cmake ..
