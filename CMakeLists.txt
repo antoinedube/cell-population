@@ -8,6 +8,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "-std=c++11 -Ofast -march=native -Wall -Werror -Wext
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/source)
 
+ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/gtest)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+
 file (
   GLOB
   source_files
@@ -42,6 +46,7 @@ TARGET_LINK_LIBRARIES(
   tests
   m
   gtest
+  gtest_main
   pthread
   gmock
 )
